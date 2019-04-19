@@ -19,7 +19,7 @@ class HelloWorldReportTest extends FlatSpec {
 //    println(s"2===> ${ctx.getProperty("net.sf.jasperreports.compiler.classpath")}")
 
     val jasperReport = JasperCompileManager.compileReport("./src/test/reports/demo_helloworld.jrxml")
-    val jasperPrint = JasperFillManager.fillReport(jasperReport, new java.util.HashMap[String, AnyRef])
+    val jasperPrint = JasperFillManager.fillReport(jasperReport, new java.util.HashMap[String, AnyRef], new JREmptyDataSource)
     JasperExportManager.exportReportToPdfFile(jasperPrint, "./src/test/reports/demo_helloworld.pdf")
   }
 
@@ -27,7 +27,7 @@ class HelloWorldReportTest extends FlatSpec {
     val jasperReport = JasperCompileManager.compileReport("./src/test/reports/demo_param.jrxml")
     val params = new java.util.HashMap[String, AnyRef]()
     params.put("GREETING", "Hello World?")
-    val jasperPrint = JasperFillManager.fillReport(jasperReport, params)
+    val jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource)
     JasperExportManager.exportReportToPdfFile(jasperPrint, "./src/test/reports/demo_param.pdf")
   }
 
