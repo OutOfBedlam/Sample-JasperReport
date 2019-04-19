@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE jasperReport
+        PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Simple_Report">
+    <parameter name="GREETING" class="java.lang.String"/>
+    <title>
+        <band height="50">
+            <textField>
+                <reportElement x="180" y="0" width="200" height="50" />
+                <textFieldExpression class="java.lang.String">$P{GREETING}</textFieldExpression>
+            </textField>
+        </band>
+    </title>
+</jasperReport>
