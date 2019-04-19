@@ -2,4 +2,5 @@
 target/
 src/test/reports/*.pdf
 src/test/reports/*.html
+src/test/reports/*.html_files/
 src/test/reports/*.java

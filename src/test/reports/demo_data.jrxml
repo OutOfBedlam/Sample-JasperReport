@@ -14,6 +14,10 @@
 				<reportElement x="10" y="0" width="360" height="50" uuid="682b582b-1ed5-4cc4-992b-708f7db194a4"/>
 				<textFieldExpression><![CDATA[$P{TITLE}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="370" y="0" width="50" height="50" uuid="08243be4-b651-46b6-9812-35b70f41f114"/>
+				<imageExpression><![CDATA["demo_plane.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
