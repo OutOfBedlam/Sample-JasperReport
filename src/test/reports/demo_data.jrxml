@@ -1,95 +1,81 @@
-<?xml version="1.0"?>
-<!DOCTYPE jasperReport
-        PUBLIC "-//JasperReports//DTD Report Design//EN"
-        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="Simple_Report">
-    <parameter name="TITLE" class="java.lang.String"/>
-    <queryString><![CDATA[select name, cost, email from sample_table]]></queryString>
-    <field name="NAME" class="java.lang.String"/>
-    <field name="COST" class="java.lang.Double"/>
-    <field name="EMAIL"/>
-
-    <title>
-        <band height="50">
-            <textField>
-                <reportElement x="10" y="0" width="200" height="50" />
-                <textFieldExpression class="java.lang.String">$P{TITLE}</textFieldExpression>
-            </textField>
-        </band>
-    </title>
-
-    <pageHeader>
-        <band>
-        </band>
-    </pageHeader>
-
-    <columnHeader>
-        <band height="20">
-            <staticText>
-                <reportElement x="10" y="0" width="180" height="20"/>
-                <textElement>
-                    <font isUnderline="true"/>
-                </textElement>
-                <text><![CDATA[NAME]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="190" y="0" width="180" height="20"/>
-                <textElement>
-                    <font isUnderline="true"/>
-                </textElement>
-                <text><![CDATA[COST]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="340" y="0" width="180" height="20"/>
-                <textElement>
-                    <font isUnderline="true"/>
-                </textElement>
-                <text><![CDATA[EMAIL]]></text>
-            </staticText>
-        </band>
-    </columnHeader>
-
-    <detail>
-        <band height="20">
-            <textField>
-                <reportElement x="10" y="0" width="180" height="20"/>
-                <textFieldExpression class="java.lang.String"><![CDATA[$F{NAME}]]></textFieldExpression>
-            </textField>
-            <textField pattern="0.00">
-                <reportElement x="190" y="0" width="180" height="20"/>
-                <textFieldExpression class="java.lang.Double"><![CDATA[$F{COST}]]></textFieldExpression>
-            </textField>
-            <textField>
-                <reportElement x="340" y="0" width="180" height="20"/>
-                <textFieldExpression class="java.lang.String"><![CDATA[$F{EMAIL}]]></textFieldExpression>
-            </textField>
-        </band>
-    </detail>
-
-    <columnFooter>
-        <band>
-        </band>
-    </columnFooter>
-
-    <pageFooter>
-        <band height="15">
-            <staticText>
-                <reportElement x="0" y="0" width="40" height="15"/>
-                <textElement/>
-                <text><![CDATA[Page:]]></text>
-            </staticText>
-            <textField>
-                <reportElement x="40" y="0" width="100" height="15"/>
-                <textElement/>
-                <textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
-            </textField>
-        </band>
-    </pageFooter>
-
-    <summary>
-        <band>
-        </band>
-    </summary>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Report" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="a398efbc-de8c-43b2-9f5a-1d5ce51e5a0f">
+	<parameter name="TITLE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select name, cost, email from sample_table]]>
+	</queryString>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="COST" class="java.lang.Double"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<title>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="360" height="50" uuid="682b582b-1ed5-4cc4-992b-708f7db194a4"/>
+				<textFieldExpression><![CDATA[$P{TITLE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="0" width="180" height="20" backcolor="#DEDCDC" uuid="79ade5a9-de6e-4394-b367-123075c89818"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="190" y="0" width="180" height="20" backcolor="#DEDCDC" uuid="e3983485-f98d-4f0e-85aa-5df86567a811"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[COST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="340" y="0" width="180" height="20" backcolor="#DEDCDC" uuid="2f8ae67e-4e17-41a3-8bae-70d867ed75d3"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="180" height="20" uuid="6f7e2d5a-6d96-459b-9342-f4681aebce4c"/>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0.00">
+				<reportElement x="190" y="0" width="180" height="20" uuid="82efd4fb-871f-4afd-9853-ac3128c54921"/>
+				<textFieldExpression><![CDATA[$F{COST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="180" height="20" uuid="beaf0911-d846-4a30-8cfb-92917d0e76fe"/>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="15" uuid="75f85b68-5d7b-439e-957e-0ec8c7a74fe7"/>
+				<text><![CDATA[Page:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="0" width="100" height="15" uuid="b8fe4456-a820-4cac-9292-e111a5a004e5"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>
