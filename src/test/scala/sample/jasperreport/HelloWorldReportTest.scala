@@ -1,13 +1,9 @@
 package sample.jasperreport
 
 import net.sf.jasperreports.engine.{JREmptyDataSource, JasperCompileManager, JasperExportManager, JasperFillManager}
-import org.scalatest.{BeforeAndAfterAll, FlatSpec}
+import org.scalatest.FlatSpec
 
-class ReportTest extends FlatSpec with BeforeAndAfterAll {
-
-  override def beforeAll(): Unit = {
-
-  }
+class HelloWorldReportTest extends FlatSpec {
 
   "jasper report" should "print hello world" in {
     val jasperReport = JasperCompileManager.compileReport("./src/test/reports/demo_helloworld.jrxml")
@@ -21,14 +17,6 @@ class ReportTest extends FlatSpec with BeforeAndAfterAll {
     params.put("GREETING", "Hello World?")
     val jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource())
     JasperExportManager.exportReportToPdfFile(jasperPrint, "./src/test/reports/demo_param.pdf")
-  }
-
-  it should "print with data" in {
-    val jasperReport = JasperCompileManager.compileReport("./src/test/reports/demo_data.jrxml")
-    val params = new java.util.HashMap[String, AnyRef]()
-    params.put("GREETING", "Hello World?")
-    val jasperPrint = JasperFillManager.fillReport(jasperReport, params, new JREmptyDataSource())
-    JasperExportManager.exportReportToPdfFile(jasperPrint, "./src/test/reports/demo_data.pdf")
   }
 
 }

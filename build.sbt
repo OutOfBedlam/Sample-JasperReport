@@ -12,16 +12,29 @@ libraryDependencies ++= Seq(
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
 )
 
+//
+// H2 Database
+//
+libraryDependencies += "com.h2database" % "h2" % "1.4.198"
+
+//
+// Jasper Report
+//
 val jasperReportVersion = "6.8.0"
 
 libraryDependencies ++= Seq(
-  //    "net.sf.jasperreports" % "jasperreports-functions" % jasperReportVersion,
-  //    "net.sf.jasperreports" % "jasperreports-chart-themes" % jasperReportVersion,
-  //    "net.sf.jasperreports" % "jasperreports-chart-customizers" % jasperReportVersion,
-  //    "net.sf.jasperreports" % "jasperreports-custom-visualization" % jasperReportVersion,
-  //    "net.sf.jasperreports" % "jasperreports-annotation-processors" % jasperReportVersion,
-  //    "net.sf.jasperreports" % "jasperreports-metadata" % jasperReportVersion,
-  "net.sf.jasperreports" % "jasperreports-fonts" % jasperReportVersion,
-  "net.sf.jasperreports" % "jasperreports" % jasperReportVersion exclude("com.lowagie", "itext"),
-  "com.lowagie" % "itext" % "2.1.7", // instead of glyph rendering patched version: "itext-2.1.7.js4.jar"
-)
+  // "net.sf.jasperreports" % "jasperreports-chart-themes", // this extension requires spring framework
+  "net.sf.jasperreports" % "jasperreports-chart-customizers",
+  "net.sf.jasperreports" % "jasperreports-functions",
+  "net.sf.jasperreports" % "jasperreports-annotation-processors",
+  "net.sf.jasperreports" % "jasperreports-custom-visualization",
+  "net.sf.jasperreports" % "jasperreports-metadata",
+  "net.sf.jasperreports" % "jasperreports-fonts",
+  "net.sf.jasperreports" % "jasperreports",
+).map( _ % jasperReportVersion )
+
+//
+// !!! add resolver to solve the issue related "com.lowagie" % "itext" % "2.1.7.js6"
+// https://community.jaspersoft.com/questions/1071031/itext-js6-dependency-issue
+//
+resolvers += "jaspersoft-third-party" at "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/"
