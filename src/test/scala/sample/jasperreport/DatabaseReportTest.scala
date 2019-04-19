@@ -1,6 +1,6 @@
 package sample.jasperreport
 
-import net.sf.jasperreports.engine.{JREmptyDataSource, JasperCompileManager, JasperExportManager, JasperFillManager}
+import net.sf.jasperreports.engine.{JasperCompileManager, JasperExportManager, JasperFillManager}
 import org.scalatest.{BeforeAndAfterAll, FlatSpec}
 import sample.db.Database
 
@@ -24,7 +24,10 @@ class DatabaseReportTest extends FlatSpec with BeforeAndAfterAll {
     val jasperPrint = JasperFillManager.fillReport(jasperReport, params, connection)
     // 5. create pdf
     JasperExportManager.exportReportToPdfFile(jasperPrint, "./src/test/reports/demo_data.pdf")
-    // 6. view
+    // 6. create html
+    JasperExportManager.exportReportToHtmlFile(jasperPrint, "./src/test/reports/demo_data.html")
+
+    // 7. view
     //net.sf.jasperreports.view.JasperViewer.viewReport(jasperPrint)
   }
 

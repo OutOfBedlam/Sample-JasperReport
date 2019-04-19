@@ -1,4 +1,5 @@
 .idea/
 target/
 src/test/reports/*.pdf
+src/test/reports/*.html
 src/test/reports/*.java
