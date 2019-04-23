@@ -1,11 +1,11 @@
 package sample.jasperreport
 
-import java.util.Collections
-
 import net.sf.jasperreports.engine.{JasperCompileManager, JasperExportManager, JasperFillManager, SimpleJasperReportsContext}
 import net.sf.jasperreports.repo.{FileRepositoryPersistenceServiceFactory, FileRepositoryService, PersistenceServiceFactory, RepositoryService}
 import org.scalatest.{BeforeAndAfterAll, FlatSpec}
 import sample.db.Database
+
+import scala.collection.JavaConverters._
 
 class DatabaseReportTest extends FlatSpec with BeforeAndAfterAll {
 
@@ -23,8 +23,8 @@ class DatabaseReportTest extends FlatSpec with BeforeAndAfterAll {
     val ctx = new SimpleJasperReportsContext
 
     val fileRepository = new FileRepositoryService(ctx, "./src/test/reports", false)
-    ctx.setExtensions(classOf[RepositoryService], Collections.singletonList(fileRepository))
-    ctx.setExtensions(classOf[PersistenceServiceFactory], Collections.singletonList(FileRepositoryPersistenceServiceFactory.getInstance))
+    ctx.setExtensions(classOf[RepositoryService], Seq(fileRepository).asJava)
+    ctx.setExtensions(classOf[PersistenceServiceFactory], Seq(FileRepositoryPersistenceServiceFactory.getInstance).asJava)
 
     // 1. compile report from xml file
 
@@ -33,6 +33,7 @@ class DatabaseReportTest extends FlatSpec with BeforeAndAfterAll {
     // 2. set parameters
     val params = new java.util.HashMap[String, AnyRef]()
     params.put("TITLE", "Database Example")
+    params.put("DATE", new java.util.Date())
 
     // 3. get database connection
     val connection = db.ds.getConnection
@@ -44,7 +45,7 @@ class DatabaseReportTest extends FlatSpec with BeforeAndAfterAll {
     JasperExportManager.getInstance(ctx).exportToPdfFile(jasperPrint, "./src/test/reports/demo_data.pdf")
 
     // 6. create html
-    //JasperExportManager.getInstance(ctx).exportToHtmlFile(jasperPrint, "./src/test/reports/demo_data.pdf")
+    //JasperExportManager.getInstance(ctx).exportToHtmlFile(jasperPrint, "./src/test/reports/demo_data.html")
 
     // 7. view
     //net.sf.jasperreports.view.JasperViewer.viewReport(jasperPrint)

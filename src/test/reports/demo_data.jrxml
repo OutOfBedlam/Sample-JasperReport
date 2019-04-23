@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Report" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="a398efbc-de8c-43b2-9f5a-1d5ce51e5a0f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+			  name="Simple_Report"
+			  pageWidth="595"
+			  pageHeight="842"
+			  whenNoDataType="NoPages"
+			  columnWidth="555"
+			  leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30"
+			  uuid="a398efbc-de8c-43b2-9f5a-1d5ce51e5a0f">
+
 	<parameter name="TITLE" class="java.lang.String"/>
+	<parameter name="DATE" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[select name, cost, email from sample_table]]>
 	</queryString>
@@ -12,7 +23,7 @@
 		<band height="50" splitType="Stretch">
 			<textField>
 				<reportElement x="10" y="0" width="360" height="50" uuid="682b582b-1ed5-4cc4-992b-708f7db194a4"/>
-				<textFieldExpression><![CDATA[$P{TITLE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{TITLE} + " - "+  $P{DATE}]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement x="370" y="0" width="50" height="50" uuid="08243be4-b651-46b6-9812-35b70f41f114"/>
